@@ -1,4 +1,4 @@
-import { Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import React from "react";
 
 const Hero: React.FC = () => {
@@ -10,18 +10,22 @@ const Hero: React.FC = () => {
       className="container"
     >
       <Stack>
-        <Typography variant="h3">Skip the travel! Find Online</Typography>
+        <Typography variant="h5">Skip the travel! Find Online</Typography>
 
         <Typography variant="h2">
           Medical <span style={{ color: "var(--color-primary)" }}>Centers</span>
         </Typography>
 
-        <Typography variant="body1">
-          Connect instantly with a 24x7 specialist or choose to video visit a
-          particular doctor.
+        <Typography variant="subtitle2">
+          Connect instantly with a 24x7 specialist or choose to <br /> video
+          visit a particular doctor.
         </Typography>
 
-        <Button variant="contained">My Bookings</Button>
+        <Box>
+          <Button variant="contained" style={{ color: "white" }}>
+            My Bookings
+          </Button>
+        </Box>
       </Stack>
 
       <p>Image here</p>
