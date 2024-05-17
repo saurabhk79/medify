@@ -1,16 +1,28 @@
 import React from "react";
-import "./App.css"
+import "./App.css";
+import Navbar from "./components/Navbar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import Home from "./pages/Home";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+]);
 
 const App: React.FC = () => {
   return (
-    <div>
+    <>
       <div className="top-headline">
         The health and well-being of our patients and their health care team
         will aways be our priority, so we follow the best practices for
         cleanliness
       </div>
-      <div>Hello</div>
-    </div>
+      <Navbar />
+      <RouterProvider router={router} />
+    </>
   );
 };
 
