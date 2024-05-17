@@ -1,0 +1,6 @@
+.top-headline {
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+}
