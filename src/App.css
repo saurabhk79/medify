@@ -1,11 +1,75 @@
 .top-headline {
-    background-color: var(--color-primary);
-    color: white;
-    text-align: center;
-    padding: 8px 0;
+  background-color: var(--color-primary);
+  color: white;
+  text-align: center;
+  padding: 8px 0;
 }
 
 .container {
-    max-width: 1080px;
-    margin: auto;
+  max-width: 1080px;
+  margin: auto;
+}
+
+.hero {
+  height: 70vh;
+  background: var(--color-bgc);
+  position: relative;
+}
+
+.search-box {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px;
+  background-color: #fff;
+  width: 900px;
+  padding: 48px;
+  text-align: center;
+}
+
+.search-box h3 {
+  margin: 32px 0 16px 0;
+}
+
+.specialisation,
+.caring,
+.family {
+  min-height: 70vh;
+  background: var(--color-bgc);
+}
+
+.caring-card {
+  position: absolute;
+  top: 12px;
+  left: 0;
+}
+
+.caring-image-1 {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.caring-image-2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+}
+
+.faq-image {
+    position: relative;
+    width: 50%;
+}
+
+.faq-card {
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(-50%);
+    left: -40px;
+}
+
+.footer {
+    background-color: var(--color-footer);
+    color: white;
 }

@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
+import Download from "./components/Download";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,8 @@ const App: React.FC = () => {
       </div>
       <Navbar />
       <RouterProvider router={router} />
+      <Download />
+      <Footer />
     </>
   );
 };

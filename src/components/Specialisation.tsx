@@ -1,22 +1,100 @@
-import { Grid, Typography } from '@mui/material'
-import React from 'react'
+import {
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Stack,
+  Typography,
+  Box,
+} from "@mui/material";
+import React from "react";
 
+import labIcon from "../assets/lab.svg";
+import stethoscopeIcon from "../assets/Stethoscope.svg";
+import heartMonitorIcon from "../assets/Heart Rate Monitor.svg";
+import bloodSampleIcon from "../assets/Blood Sample.svg";
+import immuneIcon from "../assets/Immune.svg";
+import heartRateIcon from "../assets/heart-rate.svg";
+import xrayIcon from "../assets/X-Ray.svg";
 
-const Specialisation:React.FC = () => {
+interface cardDataInterface {
+  title: string;
+  icon: string;
+}
+// Data for the cards
+const cardData: cardDataInterface[] = [
+  {
+    title: "Dentistry",
+    icon: labIcon,
+  },
+  {
+    title: "Primary Care",
+    icon: stethoscopeIcon,
+  },
+  {
+    title: "Cardiology",
+    icon: heartRateIcon,
+  },
+  {
+    title: "MRI Resonance",
+    icon: heartMonitorIcon,
+  },
+  {
+    title: "Blood Test",
+    icon: bloodSampleIcon,
+  },
+  {
+    title: "Piscologist",
+    icon: immuneIcon,
+  },
+  {
+    title: "Laboratory",
+    icon: labIcon,
+  },
+  {
+    title: "X-Ray",
+    icon: xrayIcon,
+  },
+];
+
+const Specialisation: React.FC = () => {
   return (
-    <div>
-        <Typography variant='h2' style={{color : "var(--color-footer)"}}>
-            Find By Specialisation
+    <Box className="specialisation">
+      <Stack
+        className="container"
+        justifyContent={"center"}
+        textAlign={"center"}
+      >
+        <Typography
+          variant="h2"
+          style={{ color: "var(--color-footer)" }}
+          marginY={8}
+        >
+          Find By Specialisation
         </Typography>
 
-        <Grid container spacing={4} >
-            {/* Map here with the data in config */}
-            {/* <Grid item xs={6} lg={3}>
-                <Ca
-            </Grid> */}
-        </Grid>
-    </div>
-  )
-}
+        <Grid container spacing={8} marginBottom={4}>
+          {cardData.map((data, idx) => {
+            return (
+              <Grid item key={idx} lg={3} sm={6}>
+                <Card>
+                  <CardContent>
+                    <img src={data.icon} alt={data.title} height={50} />
 
-export default Specialisation
+                    <Typography marginTop={2}>{data.title}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            );
+          })}
+        </Grid>
+
+        <Stack alignItems={"center"} justifyContent={"center"} marginBottom={4}>
+          <Button variant="contained">View All</Button>
+        </Stack>
+      </Stack>
+    </Box>
+  );
+};
+
+export default Specialisation;

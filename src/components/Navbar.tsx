@@ -1,16 +1,17 @@
-import { Button, Stack } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import React from "react";
 
 import { navMenuData } from "../config";
+import Logo from "./Logo";
 
 const Navbar: React.FC = () => {
   return (
     <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} className="container" height={60}>
-      <div>Logo</div>
+      <Logo />
 
       <Stack direction={"row"} spacing={3} alignItems={"center"}>
         {navMenuData.map((data, idx: number) => (
-          <span key={idx} className="">{data}</span>
+          <Typography key={idx} className="">{data}</Typography>
         ))}
         <Button variant="contained">My Bookings</Button>
       </Stack>
