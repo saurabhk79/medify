@@ -3,7 +3,7 @@ import { Stack, TextField, Autocomplete, Button } from "@mui/material";
 
 const Search: React.FC = () => {
   return (
-    <Stack direction={"row"} spacing={6} justifyContent={"flex-end"}>
+    <Stack direction={"row"} spacing={2} justifyContent={"flex-end"}>
       <Autocomplete
         id="free-solo-demo"
         freeSolo

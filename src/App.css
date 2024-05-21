@@ -73,3 +73,40 @@
     background-color: var(--color-footer);
     color: white;
 }
+
+
+/* My bookings */
+.colored-box {
+  height: 80px;
+  background-color: var(--color-primary);
+  border-radius: 0 0 12px 12px;
+}
+
+.my-bookings-page {
+  background: var(--color-bgc);
+  min-height: 70vh;
+}
+
+.booking-card-img {
+  position: relative;
+  height: 120px;
+  width: 120px;
+  background: var(--color-primary);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.booking-card-img .verified {
+  position: absolute;
+  bottom: 12px;
+  right: 0;
+}
+
+.deleted-text {
+  text-decoration: line-through;
+  color: var(--color-bgc);
+}

@@ -39,8 +39,9 @@ const cardData: cardDataInterface[] = [
 const SearchBox: React.FC = () => {
   return (
     <Box className="search-box">
-      <Search />
-
+      <Stack direction={"row"} justifyContent={"flex-end"}>
+        <Search />
+      </Stack>
       <h3>You may be looking for</h3>
 
       <Stack direction={"row"} spacing={4} justifyContent={"center"}>

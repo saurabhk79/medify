@@ -6,12 +6,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Download from "./components/Download";
+import MyBookings from "./pages/MyBookings";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
+  {
+    path : "/user/bookings",
+    element  : <MyBookings />
+  }
 ]);
 
 const App: React.FC = () => {

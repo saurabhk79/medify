@@ -1,5 +1,8 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import React from "react";
+
+import appleStore from "../assets/apple_store.png";
+import googlePlay from "../assets/google_play.png";
 
 const Download: React.FC = () => {
   return (
@@ -8,20 +11,26 @@ const Download: React.FC = () => {
         {/* images here */}
 
         <Box>
-          <Typography>
-            Download the{" "}
+          <Typography variant="h3" marginBottom={2}>
+            Download the <br />
             <span style={{ color: "var(--color-primary)" }}>Medify</span> App
           </Typography>
-          <Typography>Get the link to download the app</Typography>
-
-          <Stack>
-            <div>+91</div>
-            <input type="tel" />
-            <Button variant="contained" />
-          </Stack>
+          <Typography fontWeight={500}>
+            Get the link to download the app
+          </Typography>
 
           <Stack direction={"row"}>
-            {/* images here */}
+            <Stack direction={"row"}>
+              <div>+91</div>
+              <Divider />
+              <input type="tel" />
+            </Stack>
+            <Button variant="contained">Send SMS</Button>
+          </Stack>
+
+          <Stack direction={"row"} spacing={2} marginTop={6}>
+            <img src={appleStore} alt="Apple Store" />
+            <img src={googlePlay} alt="Google Play" />
           </Stack>
         </Box>
       </Stack>
