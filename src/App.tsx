@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Download from "./components/Download";
 import MyBookings from "./pages/MyBookings";
+import { Typography } from "@mui/material";
 
 const router = createBrowserRouter([
   {
@@ -22,11 +23,11 @@ const router = createBrowserRouter([
 const App: React.FC = () => {
   return (
     <>
-      <div className="top-headline">
+      <Typography className="top-headline">
         The health and well-being of our patients and their health care team
         will aways be our priority, so we follow the best practices for
-        cleanliness
-      </div>
+        cleanliness.
+      </Typography>
       <Navbar />
       <RouterProvider router={router} />
       <Download />
