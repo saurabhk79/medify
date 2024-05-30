@@ -11,11 +11,11 @@ const Home: React.FC = () => {
   return (
     <>
       <Hero />
-      <Specialisation />
-      <Caring />
-      <BlogNews />
-      <Family />
-      <Faqs />
+      {/* <Specialisation /> */}
+      {/* <Caring /> */}
+      {/* <BlogNews /> */}
+      {/* <Family /> */}
+      {/* <Faqs /> */}
     </>
   );
 };

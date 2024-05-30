@@ -30,8 +30,8 @@ const App: React.FC = () => {
       </Typography>
       <Navbar />
       <RouterProvider router={router} />
-      <Download />
-      <Footer />
+      {/* <Download />
+      <Footer /> */}
     </>
   );
 };

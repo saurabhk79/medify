@@ -2,23 +2,24 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import React from "react";
 import SearchBox from "./SearchBox";
 
-// import heroImage from "../assets/hero_image.png"
+import heroImage from "../assets/hero_image.png";
 
 const Hero: React.FC = () => {
   return (
     <Box className="hero">
       <Stack
         direction={"row"}
-        // alignItems={"center"}
         justifyContent={"space-between"}
         className="container"
       >
-        <Stack>
-          <Typography variant="h5">Skip the travel! Find Online</Typography>
+        <Stack paddingTop={10}>
+          <Typography variant="h5" fontWeight={600}>
+            Skip the travel! Find Online
+          </Typography>
 
-          <Typography variant="h2">
+          <Typography variant="h3" fontWeight={600}>
             Medical
-            <span style={{ color: "var(--color-primary)" }}>Centers</span>
+            <span style={{ color: "var(--color-primary)" }}> Centers</span>
           </Typography>
 
           <Typography>
@@ -33,9 +34,9 @@ const Hero: React.FC = () => {
           </Box>
         </Stack>
 
-        {/* <img src={heroImage} alt="hero-image" /> */}
+        <img src={heroImage} alt="hero-image" width={450} />
 
-        <SearchBox />
+        <SearchBox justifyContent="center" />
       </Stack>
     </Box>
   );
