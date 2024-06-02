@@ -6,3 +6,7 @@ export const navMenuData: string[] = [
   "Software for Provider",
   "Facilites",
 ];
+
+export const config = {
+  baseURL : "https://meddata-backend.onrender.com/"
+}

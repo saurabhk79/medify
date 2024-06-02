@@ -8,6 +8,7 @@ import capsuleIcon from "../assets/Capsule.svg";
 import hospitalIcon from "../assets/Hospital.svg";
 import Search from "./Search";
 
+
 interface cardDataInterface {
   title: string;
   icon: string;
