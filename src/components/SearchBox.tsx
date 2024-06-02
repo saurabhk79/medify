@@ -8,6 +8,7 @@ import capsuleIcon from "../assets/Capsule.svg";
 import hospitalIcon from "../assets/Hospital.svg";
 import Search from "./Search";
 
+
 interface cardDataInterface {
   title: string;
   icon: string;
@@ -36,10 +37,14 @@ const cardData: cardDataInterface[] = [
   },
 ];
 
-const SearchBox: React.FC = () => {
+interface SearchBoxProps {
+  justifyContent: string;
+}
+
+const SearchBox: React.FC<SearchBoxProps> = ({justifyContent}) => {
   return (
     <Box className="search-box">
-      <Stack direction={"row"} justifyContent={"flex-end"}>
+      <Stack direction={"row"} justifyContent={justifyContent}>
         <Search />
       </Stack>
       <h3>You may be looking for</h3>
@@ -49,9 +54,9 @@ const SearchBox: React.FC = () => {
           return (
             <Card sx={{ minWidth: 120 }} key={idx}>
               <CardContent>
-                <img src={data.icon} alt={data.title} height={50} />
+                <img src={data.icon} alt={data.title} height={30} />
 
-                <Typography>{data.title}</Typography>
+                <Typography marginTop={2}>{data.title}</Typography>
               </CardContent>
             </Card>
           );

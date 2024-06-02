@@ -11,7 +11,7 @@
 }
 
 .hero {
-  height: 70vh;
+  height: 80vh;
   background: var(--color-bgc);
   position: relative;
 }
@@ -20,9 +20,9 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: -20px;
+  bottom: -150px;
   background-color: #fff;
-  width: 900px;
+  width: 1080px;
   padding: 48px;
   text-align: center;
 }
@@ -58,22 +58,21 @@
 }
 
 .faq-image {
-    position: relative;
-    width: 50%;
+  position: relative;
+  width: 50%;
 }
 
 .faq-card {
-    position: absolute;
-    bottom: 50%;
-    transform: translateY(-50%);
-    left: -40px;
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(-50%);
+  left: -40px;
 }
 
 .footer {
-    background-color: var(--color-footer);
-    color: white;
+  background-color: var(--color-footer);
+  color: white;
 }
-
 
 /* My bookings */
 .colored-box {
@@ -92,7 +91,7 @@
   height: 120px;
   width: 120px;
   background: var(--color-primary);
-  
+
   display: flex;
   align-items: center;
   justify-content: center;

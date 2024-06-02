@@ -1,4 +1,5 @@
 import React from "react";
+
 import Hero from "../components/Hero";
 import Specialisation from "../components/Specialisation";
 import Caring from "../components/Caring";
@@ -8,16 +9,14 @@ import Faqs from "../components/Faqs";
 
 const Home: React.FC = () => {
   return (
-    <div>
-
+    <>
       <Hero />
-
-      <Specialisation />
-      <Caring />
-      <BlogNews />
-      <Family />
-      <Faqs />
-    </div>
+      {/* <Specialisation /> */}
+      {/* <Caring /> */}
+      {/* <BlogNews /> */}
+      {/* <Family /> */}
+      {/* <Faqs /> */}
+    </>
   );
 };
 
