@@ -11,35 +11,51 @@ import {
 import React from "react";
 
 import faqImage from "../assets/faq-image.png";
-import smiley from "../assets/smily.svg"
+import smiley from "../assets/smily.svg";
 
 const Faqs: React.FC = () => {
   return (
     <Box className="container">
-      <Typography style={{ color: "var(--color-primary)" }} textAlign={"center"}>
+      <Typography
+        style={{ color: "var(--color-primary)" }}
+        textAlign={"center"}
+        marginTop={4}
+      >
         Get your answers
       </Typography>
-      <Typography variant="h3" style={{ color: "var(--color-footer)" }} textAlign={"center"}>
+      <Typography
+        variant="h4"
+        style={{ color: "var(--color-footer)" }}
+        textAlign={"center"}
+        fontWeight={700}
+      >
         Frequently Asked Questions
       </Typography>
 
-      <Stack direction={"row"}>
+      <Stack direction={"row"} gap={4}>
         <Box className="faq-image">
-          <img src={faqImage} alt="faq image" />
+          <img src={faqImage} alt="faq image" width={500} />
 
           <Card className="faq-card" sx={{ width: "250px" }}>
             <CardContent>
               <Stack direction={"row"} spacing={2} alignItems={"center"}>
                 <img src={smiley} alt="call" width={50} />
-                <Typography>Free Consultation</Typography>
+                <Typography>50K+</Typography>
               </Stack>
-              <Typography>Consultation with the best</Typography>
+              <Typography>Happy Patients</Typography>
             </CardContent>
           </Card>
         </Box>
 
         <Stack justifyContent={"center"}>
-          <Accordion style={{border : "none", boxShadow: "none"}}>
+          <Accordion
+            style={{
+              border: "none",
+              boxShadow: "none",
+              outline: "none",
+              marginBottom: "16px",
+            }}
+          >
             <AccordionSummary
               expandIcon={"+"}
               aria-controls="panel1-content"
@@ -55,7 +71,14 @@ const Faqs: React.FC = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{border : "none", boxShadow: "none"}}>
+          <Accordion
+            style={{
+              border: "none",
+              boxShadow: "none",
+              outline: "none",
+              marginBottom: "16px",
+            }}
+          >
             <AccordionSummary
               expandIcon={"+"}
               aria-controls="panel2-content"
@@ -72,7 +95,14 @@ const Faqs: React.FC = () => {
             </AccordionDetails>
           </Accordion>
 
-          <Accordion style={{border : "none", boxShadow: "none"}}>
+          <Accordion
+            style={{
+              border: "none",
+              boxShadow: "none",
+              outline: "none",
+              marginBottom: "16px",
+            }}
+          >
             <AccordionSummary
               expandIcon={"+"}
               aria-controls="panel1-content"
@@ -88,7 +118,14 @@ const Faqs: React.FC = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Accordion style={{border : "none", boxShadow: "none"}}>
+          <Accordion
+            style={{
+              border: "none",
+              boxShadow: "none",
+              outline: "none",
+              marginBottom: "16px",
+            }}
+          >
             <AccordionSummary
               expandIcon={"+"}
               aria-controls="panel2-content"

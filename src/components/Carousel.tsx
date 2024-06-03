@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from "react";
 import Swiper from "swiper";
 import {
@@ -7,29 +8,30 @@ import {
 } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-import styles from "./carousel.module.css";
+// import styles from "./carousel.module.css";
 
 import "swiper/css";
 import "swiper/css/navigation";
 
-const Controls = ({ data }) => {
+const Controls: React.FC<{ data: unknown[] }> = ({ data }) => {
   const swiper = useSwiper();
 
   useEffect(() => {
     swiper.slideTo(0, undefined);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  return <></>;
+  return null;
 };
 
 interface CarouselProps {
-  data: [any];
-  renderComponent: React.FC;
+  data: unknown[];
+  renderComponent: (item: unknown) => React.ReactNode;
 }
 
 const Carousel: React.FC<CarouselProps> = ({ data, renderComponent }) => {
   return (
-    <div className={styles.wrapper}>
+    <div>
       <SwiperComponent
         initialSlide={0}
         modules={[Navigation]}
@@ -38,8 +40,8 @@ const Carousel: React.FC<CarouselProps> = ({ data, renderComponent }) => {
         allowTouchMove
       >
         <Controls data={data} />
-        {data.map((item) => (
-          <SwiperSlide key={item.id}>{renderComponent(item)}</SwiperSlide>
+        {data.map((item, index) => (
+          <SwiperSlide key={index}>{renderComponent(item)}</SwiperSlide>
         ))}
       </SwiperComponent>
     </div>

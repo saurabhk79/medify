@@ -18,12 +18,14 @@ import verifiedIcon from "../assets/verified.svg"
 
 const Caring: React.FC = () => {
   return (
-    <Box className="caring">
+    <Stack className="caring">
       <Stack
         direction={"row"}
         alignItems={"center"}
         justifyContent={"space-between"}
         className="container"
+        style={{minHeight: "90%"}}
+        paddingY={12}
       >
         <Box style={{ position: "relative" }}>
           <img src={caringOne} alt="caring1" className="caring-image-1" />
@@ -72,7 +74,7 @@ const Caring: React.FC = () => {
           </List>
         </Box>
       </Stack>
-    </Box>
+    </Stack>
   );
 };
 

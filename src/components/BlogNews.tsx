@@ -21,9 +21,10 @@ const BlogNews: React.FC = () => {
         Blog & News
       </Typography>
       <Typography
-        variant="h2"
+        variant="h3"
         style={{ color: "var(--color-footer)" }}
         textAlign={"center"}
+        fontWeight={700}
       >
         Read Our Latest News
       </Typography>

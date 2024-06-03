@@ -29,7 +29,7 @@ const footer2: string[] = [
 const Footer: React.FC = () => {
   return (
     <Box className="footer">
-      <Box className="container" marginY={4}>
+      <Box className="container" marginTop={4}>
         <Stack direction={"row"} justifyContent={"space-between"}>
           <Stack>
             <Logo />
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
 
         <Divider color="white" />
 
-        <Typography textAlign={"center"} marginY={2}>Copyright ©2023 Surya Nursing Home.com. All Rights Reserved</Typography>
+        <Typography textAlign={"center"} paddingY={2}>Copyright ©2023 Surya Nursing Home.com. All Rights Reserved</Typography>
       </Box>
     </Box>
   );

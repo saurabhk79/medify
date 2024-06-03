@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, CardContent, Card } from "@mui/material";
+import { Stack, Typography, CardContent, Card } from "@mui/material";
 import React from "react";
 
 import labIcon from "../assets/lab.svg";
@@ -43,7 +43,7 @@ interface SearchBoxProps {
 
 const SearchBox: React.FC<SearchBoxProps> = ({justifyContent}) => {
   return (
-    <Box className="search-box">
+    <Card className="search-box">
       <Stack direction={"row"} justifyContent={justifyContent}>
         <Search />
       </Stack>
@@ -62,7 +62,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({justifyContent}) => {
           );
         })}
       </Stack>
-    </Box>
+    </Card>
   );
 };
 
