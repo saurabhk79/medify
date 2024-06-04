@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Download from "./components/Download";
 import MyBookings from "./pages/MyBookings";
-import { Typography } from "@mui/material";
+import { Divider, Typography } from "@mui/material";
 
 import Bookings from "./pages/Bookings";
 
@@ -22,8 +22,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/bookings",
-    element: <Bookings />
-  }
+    element: <Bookings />,
+  },
 ]);
 
 const App: React.FC = () => {
@@ -36,9 +36,16 @@ const App: React.FC = () => {
       </Typography>
       <Navbar />
       <RouterProvider router={router} />
-
       <Download />
       <Footer />
+      <Divider />
+      <div style={{ background: "var(--color-footer)" }}>
+        <div className="container">
+          <Typography paddingY={2} color={"white"}>
+            Copyright ©2023 Surya Nursing Home.com. All Rights Reserved
+          </Typography>
+        </div>
+      </div>
     </>
   );
 };

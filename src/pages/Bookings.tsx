@@ -5,6 +5,7 @@ import BookingCard from "../components/BookingCard";
 import ads from "../assets/Ads.png";
 import Search, { SearchFormData } from "../components/Search";
 import { config } from "../config";
+import Faqs from "../components/Faqs";
 
 const Bookings: React.FC = () => {
   const [hospitals, setHospitals] = useState([]);
@@ -30,6 +31,8 @@ const Bookings: React.FC = () => {
   useEffect(() => {
     fetchHospitals();
   }, []);
+
+  console.log(hospitals);
   return (
     <div>
       <Box className="colored-box">
@@ -37,8 +40,9 @@ const Bookings: React.FC = () => {
           className="container"
           justifyContent={"flex-end"}
           style={{ height: "100%" }}
+          position={"relative"}
         >
-          <Search />
+          <Search isLandingPage={false} />
         </Stack>
       </Box>
 
@@ -62,7 +66,7 @@ const Bookings: React.FC = () => {
         marginBottom={6}
       >
         <Stack spacing={4}>
-          {hospitals.map((_, idx) => {
+          {Array(5).fill(-1).map((_, idx) => {
             return <BookingCard key={idx} isBooked={false} />;
           })}
         </Stack>
@@ -71,6 +75,7 @@ const Bookings: React.FC = () => {
           <img src={ads} alt="ads" />
         </Box>
       </Stack>
+      <Faqs />
     </div>
   );
 };

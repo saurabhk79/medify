@@ -10,6 +10,7 @@ import React from "react";
 
 import bookingCardImage from "../assets/Booking-card-image.png";
 import verified from "../assets/verified.svg";
+import SlotBox from "./SlotBox";
 
 interface BookingCardProps {
   isBooked: boolean;
@@ -63,7 +64,7 @@ const BookingCard: React.FC<BookingCardProps> = ({ isBooked }) => {
           </Stack>
         </Stack>
 
-        <Box></Box>
+        <SlotBox />
       </CardContent>
     </Card>
   );

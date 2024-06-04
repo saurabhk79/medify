@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Stack, TextField, Autocomplete, Button } from "@mui/material";
+import {
+  Stack,
+  TextField,
+  Autocomplete,
+  Button,
+  CardContent,
+  Card,
+} from "@mui/material";
 import { config } from "../config";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +24,11 @@ interface LoadingData {
   stateLoading: boolean;
   cityLoading: boolean;
 }
-const Search: React.FC = () => {
+
+interface SearchProps {
+  isLandingPage?: boolean;
+}
+const Search: React.FC<SearchProps> = ({ isLandingPage = true }) => {
   const [fetchedData, setFetchedData] = useState<FetchedData>({
     state: [],
     city: [],
@@ -76,50 +87,126 @@ const Search: React.FC = () => {
     navigate("/bookings");
   };
 
+  if (isLandingPage) {
+    return (
+      <Stack direction={"row"} spacing={2} justifyContent={"flex-end"}>
+        <Autocomplete
+          id="state-select"
+          freeSolo
+          value={formData.state}
+          onChange={(_, newValue) => {
+            setFormData((prevState) => ({
+              ...prevState,
+              state: newValue || "",
+            }));
+            fetchCities(newValue || "");
+          }}
+          disabled={loading.stateLoading}
+          style={{ width: "275px" }}
+          options={fetchedData.state}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="State"
+              disabled={loading.stateLoading}
+            />
+          )}
+        />
+
+        <Autocomplete
+          id="city-select"
+          freeSolo
+          value={formData.city}
+          onChange={(_, newValue) => {
+            setFormData((prevState) => ({
+              ...prevState,
+              city: newValue || "",
+            }));
+          }}
+          disabled={loading.cityLoading}
+          style={{ width: "275px" }}
+          options={fetchedData.city}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="City"
+              disabled={loading.cityLoading}
+            />
+          )}
+        />
+
+        <Button
+          variant="contained"
+          onClick={seeSlots}
+          disabled={loading.stateLoading || loading.cityLoading}
+        >
+          Search
+        </Button>
+      </Stack>
+    );
+  }
+
   return (
-    <Stack direction={"row"} spacing={2} justifyContent={"flex-end"}>
-      <Autocomplete
-        id="state-select"
-        freeSolo
-        value={formData.state}
-        onChange={(_, newValue) => {
-          setFormData((prevState) => ({ ...prevState, state: newValue || "" }));
-          fetchCities(newValue || "");
-        }}
-        disabled={loading.stateLoading}
-        style={{ width: "275px" }}
-        options={fetchedData.state}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="State"
+    <Card className="not-landing-page-search">
+      <CardContent style={{padding: "16px"}}>
+        <Stack direction={"row"} alignItems={"center"} spacing={2} justifyContent={"center"}>
+          <Autocomplete
+            id="state-select"
+            freeSolo
+            value={formData.state}
+            onChange={(_, newValue) => {
+              setFormData((prevState) => ({
+                ...prevState,
+                state: newValue || "",
+              }));
+              fetchCities(newValue || "");
+            }}
             disabled={loading.stateLoading}
+            style={{ width: "275px" }}
+            options={fetchedData.state}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="State"
+                disabled={loading.stateLoading}
+                size="small"
+              />
+            )}
           />
-        )}
-      />
 
-      <Autocomplete
-        id="city-select"
-        freeSolo
-        value={formData.city}
-        onChange={(_, newValue) => {
-          setFormData((prevState) => ({ ...prevState, city: newValue || "" }));
-        }}
-        disabled={loading.cityLoading}
-        style={{ width: "275px" }}
-        options={fetchedData.city}
-        renderInput={(params) => (
-          <TextField {...params} label="City" disabled={loading.cityLoading} />
-        )}
-      />
+          <Autocomplete
+            id="city-select"
+            freeSolo
+            value={formData.city}
+            onChange={(_, newValue) => {
+              setFormData((prevState) => ({
+                ...prevState,
+                city: newValue || "",
+              }));
+            }}
+            disabled={loading.cityLoading}
+            style={{ width: "275px" }}
+            options={fetchedData.city}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="City"
+                disabled={loading.cityLoading}
+                size="small"
+              />
+            )}
+          />
 
-      <Button
-        variant="contained"
-        onClick={seeSlots}
-        disabled={loading.stateLoading || loading.cityLoading}      >
-        Search
-      </Button>
-    </Stack>
+          <Button
+            variant="contained"
+            onClick={seeSlots}
+            disabled={loading.stateLoading || loading.cityLoading}
+          >
+            Search
+          </Button>
+        </Stack>
+      </CardContent>
+    </Card>
   );
 };
 

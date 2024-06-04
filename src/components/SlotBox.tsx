@@ -1,44 +1,86 @@
 import { Button, Divider, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+interface bookingInterface {
+  timing: string;
+  date: string;
+}
 
 const SlotBox: React.FC = () => {
-  return <div>
-    <Timings />
-  </div>;
+  const [booking, setBooking] = useState<bookingInterface[]>([]);
+
+  useEffect(() => {
+    const local = localStorage.getItem("booking");
+
+    if (typeof local === "string") {
+      const allBookings = JSON.parse(local);
+
+      setBooking(allBookings);
+    }
+  }, []);
+
+  const handleNewBooking = (timing: string, date: string) => {
+    const newBooking = {
+      timing,
+      date,
+    };
+
+    setBooking([...booking, newBooking]);
+    localStorage.setItem("booking", JSON.stringify(booking));
+  };
+  return (
+    <div>
+      <Timings handleNewBooking={handleNewBooking} />
+    </div>
+  );
 };
 
 export default SlotBox;
 
-const Timings: React.FC = () => {
+interface SlotTimingInterface {
+  Morning: { timings: string[] };
+  Afternoon: { timings: string[] };
+  Evening: { timings: string[] };
+}
+
+interface TimingsProps {
+  handleNewBooking: (timing: string, date: string) => void;
+}
+const slotTiming: SlotTimingInterface = {
+  Morning: {
+    timings: ["11:30 AM"],
+  },
+  Afternoon: {
+    timings: ["12:00 PM", "12:30 PM", "01:30 PM", "02:00 PM", "02:30 PM"],
+  },
+  Evening: {
+    timings: ["06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"],
+  },
+};
+
+const Timings: React.FC<TimingsProps> = ({ handleNewBooking }) => {
   return (
     <div>
-      <Stack direction={"row"} spacing={3}>
-        <Typography>Morning</Typography>
-        <Stack flexWrap={"wrap"}>
-          <Button variant={"outlined"}>11:30 AM</Button>
-        </Stack>
-      </Stack>
-      <Divider />
-      <Stack>
-        <Typography>Afternoon</Typography>
-        <Stack flexWrap={"wrap"} spacing={2}>
-          <Button variant={"outlined"}>12:00 AM</Button>
-          <Button variant={"outlined"}>12:30 AM</Button>
-          <Button variant={"outlined"}>01:30 AM</Button>
-          <Button variant={"outlined"}>02:00 AM</Button>
-          <Button variant={"outlined"}>02:30 AM</Button>
-        </Stack>
-      </Stack>
-      <Divider />{" "}
-      <Stack>
-        <Typography>Evening</Typography>
-        <Stack flexWrap={"wrap"}>
-          <Button variant={"outlined"}>06:00 AM</Button>
-          <Button variant={"outlined"}>06:30 AM</Button>
-          <Button variant={"outlined"}>07:00 AM</Button>
-          <Button variant={"outlined"}>07:30 AM</Button>
-        </Stack>
-      </Stack>
+      {Object.entries(slotTiming).map(([key, value], idx: number) => {
+        return (
+          <Stack key={idx} direction={"row"} spacing={4} marginY={2}>
+            <Typography>{key}</Typography>
+            <Stack direction={"row"} flexWrap={"wrap"} spacing={1}>
+              {value.timings.map((timing: string, timingIdx: number) => (
+                <Button
+                  key={timingIdx}
+                  variant={"outlined"}
+                  onClick={() => handleNewBooking(timing, "20 April 2024")}
+                >
+                  {timing}
+                </Button>
+              ))}
+            </Stack>
+
+            <Divider />
+          </Stack>
+        );
+      })}
     </div>
   );
 };

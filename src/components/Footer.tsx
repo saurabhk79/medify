@@ -1,11 +1,9 @@
 import {
   Box,
-  Divider,
   List,
   ListItem,
   ListItemText,
   Stack,
-  Typography,
 } from "@mui/material";
 import React from "react";
 import Logo from "./Logo";
@@ -63,10 +61,6 @@ const Footer: React.FC = () => {
             </List>
           </Stack>
         </Stack>
-
-        <Divider color="white" />
-
-        <Typography textAlign={"center"} paddingY={2}>Copyright ©2023 Surya Nursing Home.com. All Rights Reserved</Typography>
       </Box>
     </Box>
   );
