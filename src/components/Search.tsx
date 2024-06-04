@@ -1,20 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { Stack, TextField, Autocomplete, Button } from "@mui/material";
 import { config } from "../config";
+import { useNavigate } from "react-router-dom";
 
+export interface SearchFormData {
+  state: string;
+  city: string;
+}
+
+interface FetchedData {
+  state: string[];
+  city: string[];
+}
+
+interface LoadingData {
+  stateLoading: boolean;
+  cityLoading: boolean;
+}
 const Search: React.FC = () => {
-  const [fetchedData, setFetchedData] = useState({
+  const [fetchedData, setFetchedData] = useState<FetchedData>({
     state: [],
     city: [],
   });
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<SearchFormData>({
     state: "",
     city: "",
   });
-  const [loading, setLoading] = useState({
+  const [loading, setLoading] = useState<LoadingData>({
     stateLoading: true,
     cityLoading: true,
   });
+
+  const navigate = useNavigate();
 
   const fetchStates = async () => {
     try {
@@ -39,7 +56,7 @@ const Search: React.FC = () => {
     try {
       setLoading((prevState) => ({ ...prevState, cityLoading: true }));
 
-      const res = await fetch(config.baseURL + "cities/Alaska");
+      const res = await fetch(config.baseURL + "cities/" + stateName);
       const data = await res.json();
 
       console.log(data);
@@ -52,15 +69,23 @@ const Search: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    fetchCities(formData.state);
-  }, [formData.state]);
+  const seeSlots = async () => {
+    const search = { ...formData };
+
+    localStorage.setItem("search", JSON.stringify(search));
+    navigate("/bookings");
+  };
 
   return (
     <Stack direction={"row"} spacing={2} justifyContent={"flex-end"}>
       <Autocomplete
-        id="free-solo-demo"
+        id="state-select"
         freeSolo
+        value={formData.state}
+        onChange={(_, newValue) => {
+          setFormData((prevState) => ({ ...prevState, state: newValue || "" }));
+          fetchCities(newValue || "");
+        }}
         disabled={loading.stateLoading}
         style={{ width: "275px" }}
         options={fetchedData.state}
@@ -74,17 +99,26 @@ const Search: React.FC = () => {
       />
 
       <Autocomplete
-        id="free-solo-demo"
+        id="city-select"
         freeSolo
-        style={{ width: "275px" }}
-        options={fetchedData?.city}
+        value={formData.city}
+        onChange={(_, newValue) => {
+          setFormData((prevState) => ({ ...prevState, city: newValue || "" }));
+        }}
         disabled={loading.cityLoading}
+        style={{ width: "275px" }}
+        options={fetchedData.city}
         renderInput={(params) => (
           <TextField {...params} label="City" disabled={loading.cityLoading} />
         )}
       />
 
-      <Button variant="contained">Search</Button>
+      <Button
+        variant="contained"
+        onClick={seeSlots}
+        disabled={loading.stateLoading || loading.cityLoading}      >
+        Search
+      </Button>
     </Stack>
   );
 };

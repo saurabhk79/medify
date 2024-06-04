@@ -8,13 +8,8 @@ import Footer from "./components/Footer";
 import Download from "./components/Download";
 import MyBookings from "./pages/MyBookings";
 import { Typography } from "@mui/material";
-import AdCarouselBox from "./components/AdCarouselBox";
-import Specialisation from "./components/Specialisation";
-import MedicalSpecialist from "./components/MedicalSpecialist";
-import Caring from "./components/Caring";
-import BlogNews from "./components/BlogNews";
-import Family from "./components/Family";
-import Faqs from "./components/Faqs";
+
+import Bookings from "./pages/Bookings";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +20,10 @@ const router = createBrowserRouter([
     path: "/user/bookings",
     element: <MyBookings />,
   },
+  {
+    path: "/bookings",
+    element: <Bookings />
+  }
 ]);
 
 const App: React.FC = () => {
@@ -37,13 +36,7 @@ const App: React.FC = () => {
       </Typography>
       <Navbar />
       <RouterProvider router={router} />
-      <AdCarouselBox />
-      <Specialisation />
-      <MedicalSpecialist />
-      <Caring />
-      <BlogNews />
-      <Family />
-      <Faqs />
+
       <Download />
       <Footer />
     </>
