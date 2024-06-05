@@ -6,10 +6,11 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 import bookingCardImage from "../assets/Booking-card-image.png";
 import verified from "../assets/verified.svg";
+import SlotBox from "./SlotBox";
 
 interface BookingCardProps {
   isBooked: boolean;
@@ -22,13 +23,19 @@ const BookingCard: React.FC<BookingCardProps> = ({
   date,
   timing,
 }) => {
+  const [toggle, setToggle] = useState<boolean>(false);
+
   return (
     <Card>
       <CardContent>
         <Stack direction={"row"} spacing={2}>
           <Box>
             <Box className="booking-card-img">
-              <img src={bookingCardImage} alt="booking card image" />
+              <img
+                src={bookingCardImage}
+                alt="booking card image"
+                height={40}
+              />
               <img src={verified} alt="verified" className="verified" />
             </Box>
           </Box>
@@ -48,11 +55,20 @@ const BookingCard: React.FC<BookingCardProps> = ({
               Smilessence Center for Advanced Dentistry + 1 more
             </Typography>
             <Typography>
-              FREE <span className="deleted-text">₹500</span> Consultation fee
-              at clinic
+              <span style={{ color: "green", fontWeight: "700" }}>FREE</span>
+              <span className="deleted-text"> ₹500</span> Consultation fee at
+              clinic
             </Typography>
 
-            <Typography>5</Typography>
+            <Box
+              width={40}
+              bgcolor={"green"}
+              color={"white"}
+              borderRadius={1}
+              paddingX={1}
+            >
+              5
+            </Box>
           </Box>
 
           <Stack justifyContent={"space-between"}>
@@ -69,16 +85,26 @@ const BookingCard: React.FC<BookingCardProps> = ({
 
             {!isBooked && (
               <Stack>
-                <Typography textAlign={"center"} fontWeight={700}>
+                <Typography
+                  textAlign={"center"}
+                  fontWeight={700}
+                  color={"green"}
+                >
                   Available Today
                 </Typography>
-                <Button variant="contained">Book FREE Center Visit</Button>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={(e: React.MouseEvent) => setToggle(!toggle)}
+                >
+                  {toggle ? "Cancel" : "Book FREE Center Visit"}
+                </Button>
               </Stack>
             )}
           </Stack>
         </Stack>
 
-        <Box></Box>
+        {!toggle ? <></> : <SlotBox />}
       </CardContent>
     </Card>
   );

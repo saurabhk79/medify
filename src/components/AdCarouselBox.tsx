@@ -21,12 +21,7 @@ const adData: AdCarouselCardProps[] = [
   {
     image: homeads2,
   },
-  {
-    image: homeads,
-  },
-  {
-    image: homeads2,
-  },
+
 ];
 
 const AdCarouselBox: React.FC = () => {

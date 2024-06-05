@@ -27,6 +27,21 @@ const specialistData: Doc[] = [
     name: "Dr. Ankur Sharma",
     specialisation: "Medicine",
   },
+  {
+    image: doc1,
+    name: "Dr. Heena Sachdeva",
+    specialisation: "Orthopadics",
+  },
+  {
+    image: doc2,
+    name: "Dr. Ahmad Khan",
+    specialisation: "Neurologist",
+  },
+  {
+    image: doc3,
+    name: "Dr. Ankur Sharma",
+    specialisation: "Medicine",
+  },
 ];
 
 const MedicalSpecialist: React.FC = () => {
