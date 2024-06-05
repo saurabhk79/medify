@@ -9,6 +9,8 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Doc } from "./MedicalSpecialist";
+import { AdCarouselCardProps } from "./AdCarouselBox";
 
 const Controls: React.FC<{ data: unknown[] }> = ({ data }) => {
   const swiper = useSwiper();
@@ -22,8 +24,8 @@ const Controls: React.FC<{ data: unknown[] }> = ({ data }) => {
 };
 
 interface CarouselProps {
-  data: unknown[];
-  renderComponent: (item: unknown) => React.ReactNode;
+  data: Doc[] | AdCarouselCardProps[];
+  renderComponent: (item: Doc[] | AdCarouselCardProps[]) => React.ReactNode;
 }
 
 const Carousel: React.FC<CarouselProps> = ({ data, renderComponent }) => {

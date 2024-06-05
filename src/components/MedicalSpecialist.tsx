@@ -6,7 +6,7 @@ import doc2 from "../assets/doctor2.png";
 import doc3 from "../assets/doctor3.png";
 import Carousel from "./Carousel";
 
-interface Doc {
+export interface Doc {
   image: string;
   name: string;
   specialisation: string;
@@ -84,7 +84,7 @@ const DocCarouselCard: React.FC<Doc> = ({ image, name, specialisation }) => {
       <Typography style={{ color: "var(--color-footer)" }} variant="h6">
         {name}
       </Typography>
-      <Typography style={{ color: "var(--color-primary)" }} >
+      <Typography style={{ color: "var(--color-primary)" }}>
         {specialisation}
       </Typography>
     </Box>

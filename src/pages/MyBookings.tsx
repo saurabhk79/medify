@@ -48,7 +48,7 @@ const MyBookings: React.FC = () => {
           flexGrow={1}
         >
           <Stack spacing={4}>
-            {bookingData.map((booking, idx) => {
+            {bookingData.map((_booking, idx) => {
               return <BookingCard key={idx} isBooked={true} />;
             })}
           </Stack>

@@ -95,7 +95,7 @@ const BookingCard: React.FC<BookingCardProps> = ({
                 <Button
                   variant="contained"
                   size="small"
-                  onClick={(e: React.MouseEvent) => setToggle(!toggle)}
+                  onClick={(_e: React.MouseEvent) => setToggle(!toggle)}
                 >
                   {toggle ? "Cancel" : "Book FREE Center Visit"}
                 </Button>

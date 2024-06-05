@@ -12,7 +12,7 @@ import React from "react";
 const SlotBox: React.FC = () => {
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (e: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_e: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -84,10 +84,10 @@ const SlotBox: React.FC = () => {
 export default SlotBox;
 
 interface TimingsProps {
-  handleBooking: (timing: string) => void;
+  handleBooking ?: (timing: string) => void;
 }
 
-const Timings: React.FC<TimingsProps> = ({ handleBooking }) => {
+const Timings: React.FC<TimingsProps> = ({ }) => {
   return (
     <div>
       <Stack direction={"row"} spacing={3}>

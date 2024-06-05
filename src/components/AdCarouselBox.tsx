@@ -4,7 +4,7 @@ import Carousel from "./Carousel";
 import homeads from "../assets/homeads.png";
 import homeads2 from "../assets/homeads2.png";
 
-interface AdCarouselCardProps {
+export interface AdCarouselCardProps {
   image: string;
 }
 
