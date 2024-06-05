@@ -1,11 +1,21 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ads from "../assets/Ads.png";
 import BookingCard from "../components/BookingCard";
 import BookingSearch from "../components/BookingSearch";
 
 const MyBookings: React.FC = () => {
+  const [bookingData, setBookingData] = useState([]);
+
+  useEffect(() => {
+    const bookingStorage = localStorage.getItem("bookings");
+
+    if (typeof bookingStorage === "string") {
+      const bookings = JSON.parse(bookingStorage);
+      setBookingData(bookings);
+    }
+  }, []);
   return (
     <Box className="my-bookings-page">
       <Box className="colored-box">
@@ -38,11 +48,9 @@ const MyBookings: React.FC = () => {
           flexGrow={1}
         >
           <Stack spacing={4}>
-            {Array(5)
-              .fill(0)
-              .map((_, idx) => {
-                return <BookingCard key={idx} isBooked={true} />;
-              })}
+            {bookingData.map((booking, idx) => {
+              return <BookingCard key={idx} isBooked={true} />;
+            })}
           </Stack>
 
           <Box>

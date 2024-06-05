@@ -13,9 +13,15 @@ import verified from "../assets/verified.svg";
 
 interface BookingCardProps {
   isBooked: boolean;
+  timing?: string;
+  date?: string;
 }
 
-const BookingCard: React.FC<BookingCardProps> = ({ isBooked }) => {
+const BookingCard: React.FC<BookingCardProps> = ({
+  isBooked,
+  date,
+  timing,
+}) => {
   return (
     <Card>
       <CardContent>
@@ -41,7 +47,10 @@ const BookingCard: React.FC<BookingCardProps> = ({ isBooked }) => {
             <Typography>
               Smilessence Center for Advanced Dentistry + 1 more
             </Typography>
-            <Typography>FREE <span className="deleted-text">₹500</span> Consultation fee at clinic</Typography>
+            <Typography>
+              FREE <span className="deleted-text">₹500</span> Consultation fee
+              at clinic
+            </Typography>
 
             <Typography>5</Typography>
           </Box>
@@ -50,16 +59,22 @@ const BookingCard: React.FC<BookingCardProps> = ({ isBooked }) => {
             <Stack direction={"row"} spacing={1}>
               {isBooked && (
                 <>
-                  <Button variant="outlined">10:30 AM</Button>
-                  <Button variant="outlined" color="success">20 April, 2024</Button>
+                  <Button variant="outlined">{timing}</Button>
+                  <Button variant="outlined" color="success">
+                    {date}
+                  </Button>
                 </>
               )}
             </Stack>
 
-            <Stack>
-              <Typography textAlign={"center"} fontWeight={700}>Available Today</Typography>
-              <Button variant="contained">Book FREE Center Visit</Button>
-            </Stack>
+            {!isBooked && (
+              <Stack>
+                <Typography textAlign={"center"} fontWeight={700}>
+                  Available Today
+                </Typography>
+                <Button variant="contained">Book FREE Center Visit</Button>
+              </Stack>
+            )}
           </Stack>
         </Stack>
 
