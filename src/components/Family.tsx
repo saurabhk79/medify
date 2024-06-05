@@ -2,8 +2,9 @@ import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
 import React from "react";
 
 import hearthand from "../assets/hearthand.svg";
-import hospital from "../assets/Hospital.svg";
-import laboratory from "../assets/lab.svg";
+import hospital from "../assets/red-hospital.png";
+import laboratory from "../assets/yellow-lab.svg";
+import doc from "../assets/green-doc.png";
 
 const Family: React.FC = () => {
   return (
@@ -12,8 +13,9 @@ const Family: React.FC = () => {
         direction={"row"}
         className="container"
         alignItems={"center"}
-        spacing={4}
+        spacing={6}
         marginY={4}
+        height={540}
       >
         <Box>
           <Typography style={{ color: "var(--color-primary)" }}>
@@ -21,8 +23,9 @@ const Family: React.FC = () => {
           </Typography>
           <Typography
             style={{ color: "var(--color-footer)" }}
-            variant="h3"
+            variant="h4"
             fontWeight={700}
+            marginBottom={4}
           >
             Our Families
           </Typography>
@@ -36,7 +39,7 @@ const Family: React.FC = () => {
         </Box>
 
         <Stack spacing={4} textAlign={"center"} alignSelf={"flex-start"}>
-          <Card sx={{ minWidth: 275 }}>
+          <Card sx={{ height: 240, width: 180 }}>
             <CardContent>
               <Box
                 className="caring-icon"
@@ -46,9 +49,9 @@ const Family: React.FC = () => {
               </Box>
 
               <Typography
-                variant="h3"
+                variant="h4"
                 fontWeight={700}
-                marginBottom={2}
+                marginY={2}
                 style={{ color: "var(--color-footer)" }}
               >
                 5000+
@@ -57,16 +60,16 @@ const Family: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card sx={{ minWidth: 275 }}>
+          <Card sx={{ height: 240, width: 180 }}>
             <CardContent>
-              <Box className="caring-icon">
+              <Box className="caring-icon" bgcolor={"#FFF7E6"}>
                 <img src={laboratory} alt="laboratory" />
               </Box>
 
               <Typography
-                variant="h3"
+                variant="h4"
                 fontWeight={700}
-                marginBottom={2}
+                marginY={2}
                 style={{ color: "var(--color-footer)" }}
               >
                 1000+
@@ -77,16 +80,16 @@ const Family: React.FC = () => {
         </Stack>
 
         <Stack spacing={4} textAlign={"center"} alignSelf={"flex-end"}>
-          <Card sx={{ minWidth: 275 }}>
+          <Card sx={{ height: 240, width: 180 }}>
             <CardContent>
-              <Box className="caring-icon">
+              <Box className="caring-icon" bgcolor={"#FFF2F0"}>
                 <img src={hospital} alt="hospital" />
               </Box>
 
               <Typography
-                variant="h3"
+                variant="h4"
                 fontWeight={700}
-                marginBottom={2}
+                marginY={2}
                 style={{ color: "var(--color-footer)" }}
               >
                 2000+
@@ -95,16 +98,16 @@ const Family: React.FC = () => {
             </CardContent>
           </Card>
 
-          <Card sx={{ minWidth: 275 }}>
+          <Card sx={{ height: 240, width: 180 }}>
             <CardContent>
-              <Box className="caring-icon">
-                <img src={hospital} alt="hospital" />
+              <Box className="caring-icon" bgcolor={"#EBFAF1"}>
+                <img src={doc} alt="doc" />
               </Box>
 
               <Typography
-                variant="h3"
+                variant="h4"
                 fontWeight={700}
-                marginBottom={2}
+                marginY={2}
                 style={{ color: "var(--color-footer)" }}
               >
                 700+

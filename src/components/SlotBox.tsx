@@ -1,41 +1,97 @@
-import { Button, Divider, Stack, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Button,
+  Divider,
+  Stack,
+  Tab,
+  Tabs,
+  Typography,
+} from "@mui/material";
+import React from "react";
+import { hospitalDataInterface } from "../pages/Bookings";
 
-interface bookingInterface {
-  timing: string;
-  date: string;
+interface SlotBoxProps {
+  hospitalData: hospitalDataInterface;
 }
+const SlotBox: React.FC<SlotBoxProps> = ({hospitalData}) => {
+  const [value, setValue] = React.useState(0);
 
-const SlotBox: React.FC = () => {
-  const [booking, setBooking] = useState<bookingInterface[]>([]);
-
-  useEffect(() => {
-    const local = localStorage.getItem("booking");
-
-    if (typeof local === "string") {
-      const allBookings = JSON.parse(local);
-
-      setBooking(allBookings);
-    }
-  }, []);
-
-  const handleNewBooking = (timing: string, date: string) => {
-    const newBooking = {
-      timing,
-      date,
-    };
-
-    setBooking([...booking, newBooking]);
-    localStorage.setItem("booking", JSON.stringify(booking));
+  const handleChange = (_e: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
   };
+
+  const generateTabsData = () => {
+    const tabs = [];
+    const today = new Date();
+    for (let i = 0; i < 7; i++) {
+      const currentDate = new Date(today);
+      currentDate.setDate(today.getDate() + i);
+      const dateString = currentDate.toISOString().split("T")[0];
+
+      let date;
+      if (i === 0) {
+        date = "Today";
+      } else if (i === 1) {
+        date = "Tomorrow";
+      } else {
+        date = dateString;
+      }
+
+      tabs.push({ date, text: "11 Slots Remaining" });
+    }
+    return tabs;
+  };
+
+  const tabsData = generateTabsData();
+
+  const handleBooking = (timing: string) => {
+    const newBooking = { timing, date: tabsData[value].date, ...hospitalData };
+
+    console.log(newBooking)
+    const bookings = localStorage.getItem("bookings");
+
+    if (typeof bookings === "string") {
+      const bookingsData = JSON.parse(bookings);
+      const newBookingData = [...bookingsData, newBooking];
+      localStorage.setItem("bookings", JSON.stringify(newBookingData));
+    }else {
+      localStorage.setItem("bookings", JSON.stringify([newBooking]));
+    }
+  };
+
   return (
     <div>
-      <Timings handleNewBooking={handleNewBooking} />
+      <Box sx={{ maxWidth: { xs: 320, sm: 480 }, bgcolor: "background.paper" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
+        >
+          {tabsData.map((tab, index) => (
+            <Tab
+              key={index}
+              label={
+                <Box textAlign={"center"}>
+                  <Typography fontSize={14}>{tab.date}</Typography>
+                  <Typography fontSize={10}>{tab.text}</Typography>
+                </Box>
+              }
+            />
+          ))}
+        </Tabs>
+      </Box>
+      <Timings handleBooking={handleBooking} />
     </div>
   );
 };
 
 export default SlotBox;
+
+interface TimingsProps {
+  handleBooking: (timing: string) => void;
+}
 
 interface SlotTimingInterface {
   Morning: { timings: string[] };
@@ -43,9 +99,6 @@ interface SlotTimingInterface {
   Evening: { timings: string[] };
 }
 
-interface TimingsProps {
-  handleNewBooking: (timing: string, date: string) => void;
-}
 const slotTiming: SlotTimingInterface = {
   Morning: {
     timings: ["11:30 AM"],
@@ -58,7 +111,7 @@ const slotTiming: SlotTimingInterface = {
   },
 };
 
-const Timings: React.FC<TimingsProps> = ({ handleNewBooking }) => {
+const Timings: React.FC<TimingsProps> = ({ handleBooking }) => {
   return (
     <div>
       {Object.entries(slotTiming).map(([key, value], idx: number) => {
@@ -70,7 +123,7 @@ const Timings: React.FC<TimingsProps> = ({ handleNewBooking }) => {
                 <Button
                   key={timingIdx}
                   variant={"outlined"}
-                  onClick={() => handleNewBooking(timing, "20 April 2024")}
+                  onClick={() => handleBooking(timing)}
                 >
                   {timing}
                 </Button>

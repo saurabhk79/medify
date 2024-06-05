@@ -6,12 +6,27 @@ import doc2 from "../assets/doctor2.png";
 import doc3 from "../assets/doctor3.png";
 import Carousel from "./Carousel";
 
-interface Doc {
+export interface Doc {
   image: string;
-  name: string;
-  specialisation: string;
+  name?: string;
+  specialisation?: string;
 }
 const specialistData: Doc[] = [
+  {
+    image: doc1,
+    name: "Dr. Heena Sachdeva",
+    specialisation: "Orthopadics",
+  },
+  {
+    image: doc2,
+    name: "Dr. Ahmad Khan",
+    specialisation: "Neurologist",
+  },
+  {
+    image: doc3,
+    name: "Dr. Ankur Sharma",
+    specialisation: "Medicine",
+  },
   {
     image: doc1,
     name: "Dr. Heena Sachdeva",
@@ -69,7 +84,7 @@ const DocCarouselCard: React.FC<Doc> = ({ image, name, specialisation }) => {
       <Typography style={{ color: "var(--color-footer)" }} variant="h6">
         {name}
       </Typography>
-      <Typography style={{ color: "var(--color-primary)" }} >
+      <Typography style={{ color: "var(--color-primary)" }}>
         {specialisation}
       </Typography>
     </Box>

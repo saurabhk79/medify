@@ -8,7 +8,6 @@ import capsuleIcon from "../assets/Capsule.svg";
 import hospitalIcon from "../assets/Hospital.svg";
 import Search from "./Search";
 
-
 interface cardDataInterface {
   title: string;
   icon: string;
@@ -41,7 +40,7 @@ interface SearchBoxProps {
   justifyContent: string;
 }
 
-const SearchBox: React.FC<SearchBoxProps> = ({justifyContent}) => {
+const SearchBox: React.FC<SearchBoxProps> = ({ justifyContent }) => {
   return (
     <Card className="search-box">
       <Stack direction={"row"} justifyContent={justifyContent}>
@@ -52,7 +51,11 @@ const SearchBox: React.FC<SearchBoxProps> = ({justifyContent}) => {
       <Stack direction={"row"} spacing={4} justifyContent={"center"}>
         {cardData.map((data, idx) => {
           return (
-            <Card sx={{ minWidth: 120 }} key={idx}>
+            <Card
+              sx={{ minWidth: 120 }}
+              key={idx}
+              className={`search-card-iconbox ${idx === 2 ? "current" : ""}`}
+            >
               <CardContent>
                 <img src={data.icon} alt={data.title} height={30} />
 

@@ -33,6 +33,11 @@
   margin: 32px 0 16px 0;
 }
 
+.search-card-iconbox:hover, .search-card-iconbox.current {
+  border: 1px solid var(--color-primary);
+  background: #2aa6ff21;
+}
+
 /* home ads */
 .carousel-box {
   height: 500px;
@@ -145,8 +150,8 @@
 
 .booking-card-img {
   position: relative;
-  height: 120px;
-  width: 120px;
+  height: 80px;
+  width: 80px;
   background: var(--color-primary);
 
   display: flex;
@@ -155,6 +160,8 @@
 
   border-radius: 50%;
 }
+
+
 
 .booking-card-img .verified {
   position: absolute;

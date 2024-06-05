@@ -1,27 +1,39 @@
 import { Box, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ads from "../assets/Ads.png";
 import BookingCard from "../components/BookingCard";
 import BookingSearch from "../components/BookingSearch";
+import { hospitalDataInterface } from "./Bookings";
 
 const MyBookings: React.FC = () => {
+  const [bookingData, setBookingData] = useState<hospitalDataInterface[]>([]);
+
+  useEffect(() => {
+    const bookingStorage = localStorage.getItem("bookings");
+
+    if (typeof bookingStorage === "string") {
+      const bookings = JSON.parse(bookingStorage);
+      setBookingData(bookings);
+    }
+  }, []);
   return (
     <Box className="my-bookings-page">
-      <Box className="colored-box">
+      <Box className="colored-box container" position={"relative"}>
         <Stack
           className="container"
-          justifyContent={"flex-end"}
+          direction={"row"}
+          alignItems={"flex-end"}
           style={{ height: "100%" }}
         >
-          <Typography variant="h4" color={"white"}>
+          <Typography variant="h4" color={"white"} marginBottom={1} marginLeft={4}>
             My Bookings
           </Typography>
           <BookingSearch />
         </Stack>
       </Box>
 
-      <Box className="container" marginTop={16}>
+      <Box className="container" marginTop={16} paddingBottom={6}>
         <Box>
           <Typography fontWeight={700}>
             15 medical centers available in Alaska
@@ -38,11 +50,9 @@ const MyBookings: React.FC = () => {
           flexGrow={1}
         >
           <Stack spacing={4}>
-            {Array(5)
-              .fill(0)
-              .map((_, idx) => {
-                return <BookingCard key={idx} isBooked={true} />;
-              })}
+            {bookingData.map((booking, idx) => {
+              return <BookingCard key={idx} isBooked={true} data={booking} />;
+            })}
           </Stack>
 
           <Box>

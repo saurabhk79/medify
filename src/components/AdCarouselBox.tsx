@@ -4,7 +4,7 @@ import Carousel from "./Carousel";
 import homeads from "../assets/homeads.png";
 import homeads2 from "../assets/homeads2.png";
 
-interface AdCarouselCardProps {
+export interface AdCarouselCardProps {
   image: string;
 }
 
@@ -21,12 +21,7 @@ const adData: AdCarouselCardProps[] = [
   {
     image: homeads2,
   },
-  {
-    image: homeads,
-  },
-  {
-    image: homeads2,
-  },
+
 ];
 
 const AdCarouselBox: React.FC = () => {

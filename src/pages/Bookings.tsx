@@ -7,8 +7,20 @@ import Search, { SearchFormData } from "../components/Search";
 import { config } from "../config";
 import Faqs from "../components/Faqs";
 
+export interface hospitalDataInterface {
+  "Hospital Name": string;
+  Address: string;
+  City: string;
+  State: string;
+  "ZIP Code": number;
+  "Hospital overall rating": string;
+  "Hospital Type": string;
+  timing?: string;
+  date?: string;
+}
+
 const Bookings: React.FC = () => {
-  const [hospitals, setHospitals] = useState([]);
+  const [hospitals, setHospitals] = useState<hospitalDataInterface[]>([]);
 
   const fetchHospitals = async () => {
     try {
@@ -66,8 +78,8 @@ const Bookings: React.FC = () => {
         marginBottom={6}
       >
         <Stack spacing={4}>
-          {Array(5).fill(-1).map((_, idx) => {
-            return <BookingCard key={idx} isBooked={false} />;
+          {hospitals.map((hospital, idx) => {
+            return <BookingCard key={idx} isBooked={false} data={hospital} />;
           })}
         </Stack>
 
